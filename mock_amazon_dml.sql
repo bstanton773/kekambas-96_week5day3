@@ -137,3 +137,57 @@ FROM order_;
 
 SELECT *
 FROM item;
+
+
+
+-- Update row(s) of column(s) in our table
+-- Customer 3 moves from 123 Real Street to 321 Fake Ave and gets rid of loyatly membership
+UPDATE customer 
+SET address = '321 Fake Ave', loyalty_member = FALSE 
+WHERE customer_id = 3;
+
+SELECT * FROM customer;
+
+
+-- A SET without a WHERE will update all rows
+UPDATE customer 
+SET loyalty_member = TRUE;
+
+SELECT *
+FROM customer;
+
+
+
+-- Change people who have Drive in their address to not be loyalty member
+UPDATE customer 
+SET loyalty_member = FALSE 
+WHERE address LIKE '%Drive';
+
+SELECT *
+FROM customer;
+
+
+
+-- DELETE record(s) from table 
+-- DELETE FROM table_name WHERE condition 
+
+DELETE FROM customer 
+WHERE first_name LIKE 'F%';
+
+SELECT *
+FROM customer;
+
+
+
+SELECT * FROM item;
+
+DELETE FROM item 
+WHERE price < 5;
+
+SELECT *
+FROM order_product;
+
+
+TRUNCATE TABLE item CASCADE;
+
+
